@@ -52,6 +52,8 @@ The Portswigger's login lab is vulnerable to username enumeration and password b
   - Press '5' to save found credentials to a JSON file.
   - Press '6' to exit the script
 
+---
+
 ## Important Note
 
 Before attempting a brute-force attack, it's crucial to **enumerate valid usernames** using the provided username list. This is because the brute-force attack requires a valid username as a target to crack the associated password.
@@ -73,6 +75,8 @@ While the tool combines usernames and corresponding passwords in the credentials
 
 Lab Objective: obtain a single valid username and password combination
 This issue arises when the tool assumes a one-to-one correspondence between usernames and passwords in the provided wordlists. However, in real-world scenarios, there might be fewer passwords than usernames, or a username might have multiple potential passwords.
+
+---
 
 ## About
 
