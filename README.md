@@ -85,6 +85,7 @@ This project was created by Franco Joaquin Zini
 You can contact me at:
 
 - Email: francojzini@gmail.com
+- LinkedIn: https://www.linkedin.com/in/francojzini/
 
 ## License:
 GNU General Public License (GNU GPL)
