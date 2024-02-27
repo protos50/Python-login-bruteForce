@@ -29,7 +29,7 @@ The Portswigger's login lab is vulnerable to username enumeration and password b
 
 1. Clone the repository:
 
-    ```git clone https://github.com/your-username/bruteforcer.git```
+    ```git clone https://github.com/protos50/brute-force-portswigger-login.git```
 
 2. Install dependencies:
 
