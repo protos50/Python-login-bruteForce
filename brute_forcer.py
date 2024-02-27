@@ -2,6 +2,7 @@ import json
 import requests
 import threading
 
+#
 class BruteForcer:
     def __init__(self, url, users_file, passwords_file):
         with open(users_file) as uf, open(passwords_file) as pf:
