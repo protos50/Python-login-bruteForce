@@ -2,12 +2,18 @@ import os
 from brute_forcer import BruteForcer
 from colorama import  Style, Fore
 
-# Name of the User and Password lists
+# Name of Users and Passwords list
 users_file_name = "usernames.txt"
 passwords_file_name = "passwords.txt"
     
    
 def menu_header():
+    """
+    Prints a visually appealing header for the brute-forcer menu.
+
+    Includes the program's name, version, and a disclaimer about its intended usage.
+    """
+
     print(Style.BRIGHT + Fore.GREEN)
     print("*******************************************************")
     print("*                                                     *")
@@ -18,6 +24,15 @@ def menu_header():
     print(Style.RESET_ALL)
 
 def menu_body(bf):
+    """
+    Displays the main body of the brute-forcer menu.
+
+    Args:
+        bf (BruteForcer): An instance of the BruteForcer class, or None if a URL hasn't been provided yet.
+
+    Prints the current login URL (if available), a list of available menu options, and prompts the user for input.
+    """
+
     print("Current LOGIN URL: " + Fore.LIGHTBLUE_EX + (bf.url if bf is not None else "None") + Style.RESET_ALL)
     print("\n[1] Enter login URL")
     print("[2] Find valid user")
@@ -27,11 +42,27 @@ def menu_body(bf):
     print("[6] Exit")
 
 def enterURL_option():
+    """
+    Prompts the user to enter the login URL and creates a BruteForcer instance.
+
+    Returns:
+        BruteForcer: A new instance of the BruteForcer class, initialized with the provided URL, username file, and password file.
+    """
+
     url = input("\n>>> Please enter the login URL: ")
     return BruteForcer(url, users_file_name, passwords_file_name)
  
 
 def find_username_option(bf):
+    """
+    Attempts to find valid usernames using the existing BruteForcer instance.
+
+    Args:
+        bf (BruteForcer): The BruteForcer instance to use for finding valid usernames.
+
+    Prints a list of valid usernames, if any are found.
+    """
+
     #Proceed only if a URL has been provided.
     if bf is not None:
         bf.find_valid_usernames()
@@ -45,6 +76,15 @@ def find_username_option(bf):
         
         
 def brute_force_option(bf):
+    """
+    Performs a brute-force attack on passwords using the existing BruteForcer instance.
+
+    Args:
+        bf (BruteForcer): The BruteForcer instance to use for the brute-force attack.
+
+    Prints a list of valid passwords, if any are found.
+    """
+
     #Proceed only if a URL has been provided.
     if bf is not None:
         #Proceed only if at least one user name has been found
@@ -59,6 +99,13 @@ def brute_force_option(bf):
     
     
 def output_results(bf):
+    """
+    Prints the results of the brute-force attack, including valid usernames, passwords, and credentials.
+
+    Args:
+        bf (BruteForcer): The BruteForcer instance containing the results to be printed.
+    """
+
     valid_usernames = bf.valid_usernames
     valid_passwords = bf.valid_passwords
     print(f"\n-> Valid usernames: {Fore.LIGHTGREEN_EX} {', '.join(valid_usernames)} {Style.RESET_ALL}")
@@ -77,6 +124,15 @@ def output_results(bf):
         
             
 def print_results_option(bf):
+    """
+    Provides a menu option for printing the results of the brute-force attack.
+    
+    Args:
+        bf (BruteForcer): The BruteForcer instance containing the results to be printed.
+
+    Calls the output_results() function to handle the actual printing.
+    """
+
     #Proceed only if a URL has been provided.
     if bf is not None:
         output_results(bf)
@@ -86,6 +142,13 @@ def print_results_option(bf):
     
     
 def save_file_option(bf):
+    """
+    Provides a menu option for saving the found credentials to a JSON file.
+
+    Args:
+        bf (BruteForcer): The BruteForcer instance containing the credentials to be saved.
+    """
+
     #Proceed only if a URL has been provided.
     if bf is not None:
         # Check if there is at least one valid username and password.
@@ -102,6 +165,12 @@ def save_file_option(bf):
     
        
 def menu():
+    """
+    Runs the main menu loop for interacting with the brute-forcer.
+
+    Handles user input, validates choices, and calls the appropriate functions for each menu option.
+    """
+
     bf = None
     
     while True:
